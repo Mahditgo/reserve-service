@@ -1,18 +1,21 @@
 const express = require('express');
-const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 
 
-dotenv.config();
+
+
+const authRoutes = require('./routes/authRouter');
+
+
+
 const app = express();
-
-
 app.use(express.json());
+app.use(cookieParser());
 
 
 
-
-
+app.use('/api/auth',   authRoutes)
 
 
 
