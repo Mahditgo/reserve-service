@@ -10,9 +10,9 @@ exports.signUp = async ( req, res ) => {
       errors: result.error.flatten().fieldErrors,
     });
   }
-    const { userName, email, password } = result.data;
+    const { userName, email, password, role = 'student' } = result.data;
 
-    const user = await authService.signUp({userName, email, password});
+    const user = await authService.signUp({userName, email, password, role});
     if(!user) return res.status(400).json({ message: 'User already exists' });
 
     res.cookie('refreshToken', user.refreshToken, {

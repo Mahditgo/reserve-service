@@ -3,7 +3,7 @@ const User = require('./../models/user.model');
 const tokenUtils = require('./../utils/token.util');
 
 
-exports.signUp = async ({userName, email, password}) => {
+exports.signUp = async ({userName, email, password, role = 'student'}) => {
     const existingUser = await User.findOne({email});
     if(existingUser) return null;
 
@@ -32,15 +32,6 @@ exports.login = async ({ email, password }) => {
   return { accessToken, refreshToken };
 };
 
-
-// exports.logout = async ( res ) => {
-
-//   res.clearCookie('refreshToken', {
-//      httpOnly: true,
-//     secure: false,
-//     sameSite: 'Strict'
-//   })
-// }
 
 
 exports.refresh = async ( refreshToken ) => {
