@@ -7,6 +7,7 @@ const serviceSchema = new mongoose.Schema({
         type : String,
         required : true
     },
+    univercityName : String,
     fromLocation : {
         type : String,
         required : true
